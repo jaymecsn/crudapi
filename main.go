@@ -34,7 +34,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request){
     params := mux.Vars(r)
     for index, item := range movies {
 
-        if item.ID == parambs["id"]{
+        if item.ID == params["id"]{
             movies = append(movies[:index], movies[index+1:]...)
             break
         }
@@ -82,8 +82,8 @@ func updateMovie(w http.ResponseWriter, r *http.Request){
 func main(){
     r := mux.NewRouter()
     
-    movies = append(movies, Movie(ID:"1", Isbn:"438227", Title:"Test Movie One, one solid standalone", Director:&Director{Firstname:"João", Lastname:"Ninguém"}))
-    movies = append(movies, Movie(ID:"2", Isbn:"454554", Title:"Test Movie Two, the greatest sequel",Director:&Director{Firstname:"Maria",Lastname:"Bonita"}))
+    movies = append(movies, Movie(ID: "1", Isbn:"438227", Title:"Test Movie One, one solid standalone", Director:&Director{Firstname:"João", Lastname:"Ninguém"}))
+    movies = append(movies, Movie(ID: "2" , Isbn:"454554", Title:"Test Movie Two, the greatest sequel",Director:&Director{Firstname:"Maria",Lastname:"Bonita"}))
 
     r.HandleFunc("/movies", getMovies).Methods("GET")
     r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
